@@ -1,6 +1,7 @@
 plugins {
     id 'java-gradle-plugin'
     id 'com.gradle.plugin-publish' version '0.10.0'
+    id 'maven-publish' // optional, only required for POM customization and publishing to custom repositories
 }
 
 group = 'org.samples.greeting'
@@ -24,6 +25,24 @@ pluginBundle {
         greetingsPlugin {
             displayName = 'Greeting Plugin'
             description = 'Template for people to start their own plugin adventure'
+        }
+    }
+}
+
+publishing {
+    // optional, only required for publishing to a custom repository
+    repositories {
+        maven {
+            url "$buildDir/repo"
+        }
+    }
+    // optional, only required for POM customization
+    afterEvaluate {
+        publications.getByName('pluginMaven') {
+            pom {
+                name = 'Gradle Guides Example Plugins'
+                description = 'Template for people to start their own plugin adventure'
+            }
         }
     }
 }
