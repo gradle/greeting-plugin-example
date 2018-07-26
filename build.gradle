@@ -1,5 +1,6 @@
 plugins {
     id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.10.0'
 }
 
 group = 'org.samples.greeting'
@@ -10,6 +11,19 @@ gradlePlugin {
         greetingsPlugin {
             id = 'org.samples.greeting'
             implementationClass = 'org.example.greeting.GreetingPlugin'
+        }
+    }
+}
+
+pluginBundle {
+    website = 'http://www.gradle.org/' // please change this URL to your own website/repository
+    vcsUrl = 'https://github.com/gradle-guides/greeting-plugin-example'
+    tags = ['example', 'template']
+
+    plugins {
+        greetingsPlugin {
+            displayName = 'Greeting Plugin'
+            description = 'Template for people to start their own plugin adventure'
         }
     }
 }
