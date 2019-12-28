@@ -1,1 +1,0 @@
-=== This repository was merged into https://github.com/gradle/guides[gradle/guides]
